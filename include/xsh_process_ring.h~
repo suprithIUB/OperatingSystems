@@ -1,0 +1,9 @@
+#include<xinu.h>
+#include<stdio.h>
+#include<string.h>
+
+
+int NUM_PROCESSES = 4;
+int box[NUM_PROCESSES];
+
+void counterDecrementer(int[] listOfCounters, int processID);

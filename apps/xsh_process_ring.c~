@@ -1,0 +1,13 @@
+#ifndef
+#include<process_ring.h>
+void counterDecrementer(int listOfCounters[], int processID,int rounds){	
+	
+	int i = rounds;	
+	while(i == 0){
+		int temp = listOfCounters[processID];
+		printf("Ring Element %d : Round %d : Value %d : \n", processID, i, temp);
+		i--;
+		temp--;
+		listOfCounters[processID+1] = temp;
+	}
+}

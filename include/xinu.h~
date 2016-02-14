@@ -1,6 +1,5 @@
 /* xinu.h - include all system header files */
-#ifndef XINU_H
-#define XINU_H
+
 #include <kernel.h>
 #include <conf.h>
 #include <process.h>
@@ -39,4 +38,3 @@
 #include <am335x_control.h>
 #include <am335x_eth.h>
 #include <armv7a.h>
-#endif
