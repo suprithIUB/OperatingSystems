@@ -31,4 +31,12 @@
 # Debug files
 *.dSYM/
 
+# Generated Files
 mkimage
+lex.yy.c
+y.tab.c
+
+# Website Files
+.sass-cache/
+_site/
+Gemfile.lock
