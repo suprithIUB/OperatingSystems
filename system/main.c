@@ -21,8 +21,12 @@ process	main(void)
   netstart(bbb_ipaddr,bbb_router);
 
   /* Seeding the random number generator */
-  uint32 seed = 1;
-  kprintf("Seeding PRNG with %d\n", seed);
+  uint32 seed = 0;
+
+  /* XOR in the high- and low- bits for the MAC_ID0 registers. */
+  seed = *(int32*)(AM335X_CONTROL_BASE + AM335X_MAC_ID1_HI_OFF) ^ *(int32*)(AM335X_CONTROL_BASE + AM335X_MAC_ID1_LO_OFF);
+
+  kprintf("Seeding PRNG with 0x%x\n", seed);
   srand(seed);
 
   /* Spawning a shell */

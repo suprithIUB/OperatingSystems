@@ -1,6 +1,6 @@
 #include <xinu.h>
 
-uint32 qlen(qid16 q) {
+uint32 listlen(qid16 q) {
 	uint32 els  = 0;
 	pid32  curr = queuetab[queuehead(q)].qnext;
 
@@ -12,13 +12,20 @@ uint32 qlen(qid16 q) {
 	return els;
 }
 
-/*pid32 getel(qid16 q) {*/
-/*	pid32 tail;*/
+pid32 getel(qid16 q, const uint32 index) {
 
-/*	if (isempty(q)) {*/
-/*		return EMPTY;*/
-/*	}*/
+	uint32 curr_index = 0;
+	pid32  curr_pid   = queuetab[queuehead(q)].qnext;
 
-/*	tail = queuetail(q);*/
-/*	return getitem(queuetab[tail].qprev);*/
-/*}*/
+	while (curr_pid != queuetail(q)) {
+		if (index == curr_index) {
+/*			kprintf("Attempting getitem on PID %d\n", curr_pid);*/
+			return getitem(curr_pid);
+		} else {
+			++curr_index;
+			curr_pid = queuetab[curr_pid].qnext;
+		}
+	}
+
+	return NULLPROC;
+}
