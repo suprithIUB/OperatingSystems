@@ -58,5 +58,8 @@ shellcmd xsh_ps(int nargs, char *args[])
 			prptr->prprio, prptr->prparent, prptr->prstkbase,
 			prptr->prstkptr, prptr->prstklen);
 	}
+
+/*	kprintf("There are %d processes in the ready queue.\n", qlen(readylist));*/
+
 	return 0;
 }

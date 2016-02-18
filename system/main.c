@@ -19,12 +19,19 @@ process	main(void)
 
   /* Start the network */
   netstart(bbb_ipaddr,bbb_router);
+
+  /* Seeding the random number generator */
+  uint32 seed = 1;
+  kprintf("Seeding PRNG with %d\n", seed);
+  srand(seed);
+
+  /* Spawning a shell */
   kprintf("\n...creating a shell\n");
   recvclr();
   resume(create(shell, 8192, 50, "shell", 1, CONSOLE));
-  
+
   /* Wait for shell to exit and recreate it */
-  
+
   while (TRUE) {
     receive();
     sleepms(200);
