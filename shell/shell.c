@@ -29,7 +29,6 @@ const	struct	cmdent	cmdtab[] = {
 	{"udpeserver",	FALSE,	xsh_udpeserver},
 	{"uptime",	FALSE,	xsh_uptime},
 	{"?",		FALSE,	xsh_help},
-	{"test",    FALSE,  xsh_test},
 	{"process_ring",    FALSE,  xsh_process_ring}
 
 };

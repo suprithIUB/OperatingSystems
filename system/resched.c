@@ -1,7 +1,5 @@
 /* resched.c - resched, resched_cntl */
 
-#define NEWSCHED 1
-
 #include <xinu.h>
 
 struct	defer	Defer;
@@ -26,7 +24,6 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 
 	ptold = &proctab[currpid];
 
-#if NEWSCHED
 	/* Mark the current process as ready and put it back into the ready list. */
 
 	if (ptold->prstate == PR_CURR) {
@@ -36,24 +33,6 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 
 	/* Select a new ready process at "random" */
 	currpid = getel(readylist, rand() % listlen(readylist));
-
-/*	kprintf("Selecting process %d\n", currpid);*/
-
-#else
-	if (ptold->prstate == PR_CURR) {  /* Process remains eligible */
-		if (ptold->prprio > firstkey(readylist)) {
-			return;
-		}
-
-		/* Old process will no longer remain current */
-
-		ptold->prstate = PR_READY;
-		insert(currpid, readylist, ptold->prprio);
-	}
-
-	currpid = dequeue(readylist);
-
-#endif
 
 	/* Force context switch to the new ready process */
 

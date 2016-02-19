@@ -25,8 +25,6 @@ process	main(void)
 
   /* XOR in the high- and low- bits for the MAC_ID0 registers. */
   seed = *(int32*)(AM335X_CONTROL_BASE + AM335X_MAC_ID1_HI_OFF) ^ *(int32*)(AM335X_CONTROL_BASE + AM335X_MAC_ID1_LO_OFF);
-
-  kprintf("Seeding PRNG with 0x%x\n", seed);
   srand(seed);
 
   /* Spawning a shell */
