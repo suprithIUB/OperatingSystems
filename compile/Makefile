@@ -11,7 +11,7 @@
 COMPILER_ROOT	=	arm-none-eabi-
 
 #ubuntu VM location of libgcc
-LIBGCC_LOC      =      /usr/lib/gcc/arm-none-eabi/5.2.0
+LIBGCC_LOC      =      /usr/lib/gcc/arm-none-eabi/4.9.3
 
 #SoIC linux machine location of libgcc
 # LIBGCC_LOC      =      /l/arm2/devtools/lib/gcc/arm-none-eabi/4.8.4
