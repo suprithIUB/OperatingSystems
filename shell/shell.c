@@ -18,6 +18,7 @@ const	struct	cmdent	cmdtab[] = {
 	{"exit",	TRUE,	xsh_exit},
 	{"help",	FALSE,	xsh_help},
 	{"process_ring",	FALSE,	xsh_process_ring},
+	{"babybird",	FALSE,	xsh_babybird},
 	{"hello", 	FALSE, 	xsh_hello},
 	{"ipaddr",	FALSE,	xsh_ipaddr},
 	{"kill",	TRUE,	xsh_kill},

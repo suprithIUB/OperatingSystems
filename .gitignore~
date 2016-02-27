@@ -31,7 +31,4 @@
 # Debug files
 *.dSYM/
 
-#Temp files
-*.~
-
 mkimage

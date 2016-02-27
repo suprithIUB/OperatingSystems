@@ -1,0 +1,16 @@
+#ifndef BABY_BIRD
+#define BABY_BIRD
+#include<xinu.h>
+#include<stdlib.h>
+
+
+
+extern volatile int worms;
+extern volatile int babyBirds;
+extern volatile int32 baby_mutex;
+extern volatile int32 parent_mutex;
+extern volatile int parent_itr;
+void babyBirdProcess(int, int);
+void parentBirdProcess();
+
+#endif

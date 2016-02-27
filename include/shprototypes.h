@@ -79,3 +79,7 @@ extern	shellcmd  xsh_hello	(int, char *[]);
 /* in file xsh_process_ring.c */
 extern	shellcmd  xsh_process_ring	(int, char *[]);
 
+/* in file xsh_process_ring.c */
+extern	shellcmd  xsh_babybird	(int, char *[]);
+
+
