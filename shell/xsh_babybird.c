@@ -37,24 +37,8 @@ shellcmd xsh_babybird(int nargs, char* args[]){
 		baby_mutex = 0;
 		parent_mutex = 0;
 		parent_itr = 3;
-		//mutex_create(&baby_mutex);
-		//mutex_create(&parent_mutex);
-		/*cond_t * temp = (cond_t *) getmem(sizeof(cond_t));
-		if(temp != NULL){
-			cond_init(temp);
-			printf("temp->first:%d", temp->cqueue->first);
-			printf("temp->last:%d", temp->cqueue->last);
-			que_enque(temp->cqueue, 1);
-			que_enque(temp->cqueue, 2);
-			que_enque(temp->cqueue, 3);
-			que_enque(temp->cqueue, 4);
-			que_enque(temp->cqueue, 5);
-			printf("que item: %d", que_deque(temp->cqueue));
-			printf("que item: %d", que_deque(temp->cqueue));
-			printf("que item: %d", que_deque(temp->cqueue));
-		}
-		*/	
-						
+		mutex_create(&baby_mutex);
+		mutex_create(&parent_mutex);
 		cond_worms = (cond_t *) getmem(sizeof(cond_t));
 		cond_init(cond_worms);
 		cond_empty = (cond_t *) getmem(sizeof(cond_t));

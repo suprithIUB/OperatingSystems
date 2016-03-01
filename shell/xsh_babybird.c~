@@ -37,8 +37,8 @@ shellcmd xsh_babybird(int nargs, char* args[]){
 		baby_mutex = 0;
 		parent_mutex = 0;
 		parent_itr = 3;
-		//mutex_create(&baby_mutex);
-		//mutex_create(&parent_mutex);
+		mutex_create(&baby_mutex);
+		mutex_create(&parent_mutex);
 		/*cond_t * temp = (cond_t *) getmem(sizeof(cond_t));
 		if(temp != NULL){
 			cond_init(temp);
