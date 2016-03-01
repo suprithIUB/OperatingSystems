@@ -1,0 +1,6 @@
+#include<myqueue.h>
+
+syscall que_init(queue* q){
+	q->first = q->last = -1;
+	return OK;
+}

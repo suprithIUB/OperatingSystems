@@ -1,6 +1,5 @@
 /* unlock.c - unlock */
-#include <xinu.h>
-#define mutex_t int32
+#include <mutex.h>
 
 
 /*------------------------------------------------------------------------

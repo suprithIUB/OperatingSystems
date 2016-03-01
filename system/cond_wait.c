@@ -1,27 +1,22 @@
-/* unlock.c - unlock */
+#include <cond.h>
 
 
-#include<conditionvar.h>
+/*
+struct cond{
+	queue* cqueue;
+	int16 var;
+};
+*/
 
-//#define mutex_t int32
-//typedef int32 mutex_t;
-/*------------------------------------------------------------------------
- *  unlock  -  lock implmentation
- *------------------------------------------------------------------------
- */
-syscall	cond_wait(
-	   cond_t		*cv		/* initial value of  the lock	*/
-	, volatile mutex_t *lock)
-{	
+syscall cond_wait(cond_t* cv, volatile mutex_t* mutex){
+	if(cv == NULL)
+		return SYSERR;
+	pid32 pid = getpid();
 	
-	enqueue(currpid, cv->cv_queue);
-	//cv->cv_count++;
+	que_enque(cv->cqueue, pid);
+	mutex_unlock(mutex);
+	suspend(pid);
 	
-	tas_unlock(lock);
-	
-	suspend(currpid);
-	
-	while(tas_lock(lock) == 1);
-	
+	mutex_lock(mutex);
 	return OK;
 }
