@@ -10,7 +10,7 @@ extern volatile int eat_share;
 extern volatile mutex_t baby_mutex;
 extern volatile mutex_t mutex;
 extern volatile int worms;
-extern volatile mutex_t parent_mutex;
+extern volatile mutex_t mutex;
 extern volatile int parent_itr;
 extern volatile int done;
 extern volatile int global_worms;

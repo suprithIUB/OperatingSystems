@@ -8,11 +8,11 @@ void babyBirdProcess(int babyId){
 	//int status = 0;	
 	while(myshare > 0){
 		
-		mutex_lock(&baby_mutex); //do nothing, wait for the lock to be false
+		mutex_lock(&mutex); //do nothing, wait for the lock to be false
 		
 		//wait here if worms are less than or equal to zero
-		while(worms <= 0)
-			cond_wait(cond_worms, &baby_mutex);
+		if(worms <= 0)
+			cond_wait(cond_worms, &mutex);
 		
 	
 		if(worms > 0){		
@@ -21,17 +21,15 @@ void babyBirdProcess(int babyId){
 			printf("Baby bird %d ate a worm, worm count: %d\n", babyId, worms);
 		
 			if(myshare > 0 && worms <= 0){
-			//		printf("signalling by baby bird %d\n", babyId);
 					cond_signal(cond_empty);
 			
 			}
 		}
 		if(worms <= 0){
-			//		printf("signalling by baby bird %d\n", babyId);
 					cond_signal(cond_empty);
 			
 		}
-		mutex_unlock(&baby_mutex); //release lock
+		mutex_unlock(&mutex); //release lock
 		
 	}
 	

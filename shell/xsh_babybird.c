@@ -24,7 +24,7 @@ volatile int eat_share;
 volatile int global_worms;
 volatile int done = 1;
 volatile mutex_t baby_mutex;
-volatile mutex_t parent_mutex;
+volatile mutex_t mutex;
 volatile mutex_t parent_itr;
 
 shellcmd xsh_babybird(int nargs, char* args[]){
@@ -45,18 +45,15 @@ shellcmd xsh_babybird(int nargs, char* args[]){
 		if(nargs == 4)
 			eat_share = atoi(args[3]);
 		baby_mutex = 0;
-		parent_mutex = 0;
+		mutex = 0;
 		parent_itr = 3;
 		
 		mutex_create(&baby_mutex);
-		mutex_create(&parent_mutex);
-		mutex_create(&parent_itr);
+		mutex_create(&mutex);
 		cond_worms = (cond_t *) getmem(sizeof(cond_t));
 		cond_init(cond_worms);
 		cond_empty = (cond_t *) getmem(sizeof(cond_t));
 		cond_init(cond_empty);
-		cond_kill = (cond_t *) getmem(sizeof(cond_t));
-		cond_init(cond_kill);
 		
 		int i;
 		
