@@ -9,15 +9,6 @@
 
 
 
-// Function to set the id of the thread. Input from main thread via a mailbox message
-
-void setID(volatile int *id, message* mail){
-	
-	*id = mail->payload.integer;
-	//printf("Got my new id from main %d\n", *id);	
-	
-}
-
 
 /*
  * void* tring_thread_start(void* arg)
@@ -50,8 +41,7 @@ void* tring_thread_start(void* arg) {
 			
 			switch (MAIL_TYPE){
 				case 0:	if(id == -2){
-						
-						setID(&id, incoming_mail);
+						id = incoming_mail->payload.integer;
 						tring_signal();
 					}
 					
